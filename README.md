@@ -20,7 +20,7 @@ Tools & Technologies
   SQL Ad-hoc Analysis
 
  1.List products with a base price greater than 500 that are featured in the BOGOF promotion.
- Query: 
+
      select 
 	      p.product_name,e.base_price,e.promo_type
     from fact_events e
@@ -30,7 +30,7 @@ Tools & Technologies
     group by p.product_name;
 
 2.Calculate the number of stores in each city and rank cities by store.
- Query: 
+ 
      select 
         	city,count(store_id) as total_stores
     from dim_stores
@@ -38,7 +38,7 @@ Tools & Technologies
     order by total_stores desc;
 
 3.Display each campaign's total revenue before and after promotions, with revenue.
-Query: 
+
     select 
       	campaign_id,
          concat(round(sum(base_price * `quantity_sold(before_promo)`)/1000000,2),' M') as `revenue(before_promo)`,
@@ -47,7 +47,7 @@ Query:
     group by campaign_id;
 
  4.Calculate and rank categories by Incremental Sold Quantity Percentage (ISU%) during the Diwali campaign.
- Query: 
+
      with category_sales as 
 (
 	select
@@ -75,7 +75,7 @@ from isu_calculation
 order by isu_rank;
 
 5.Identify the top 5 products across all campaigns by Incremental Revenue Percentage (IR%), including product name, category, and IR%.
-query:
+
     with category_sales as (
 	select
 			p.product_name,p.category,
