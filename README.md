@@ -115,3 +115,7 @@ Key Findings
 * Category Performance: The Home Appliances category recorded a 264.4% increase in sold units after promotions, indicating a strong sales lift.
 * City Performance: Bengaluru emerged as a leading city for promotional sales, generating ₹51 million in revenue.
 
+
+
+Author
+Bhanu Prakash Kanakamedala
