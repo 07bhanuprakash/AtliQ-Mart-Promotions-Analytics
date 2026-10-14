@@ -49,7 +49,7 @@ Tools & Technologies
  4.Calculate and rank categories by Incremental Sold Quantity Percentage (ISU%) during the Diwali campaign.
 
      with category_sales as 
-(
+	(
 	select
 			p.category,
 			 SUM(e.`quantity_sold(after_promo)`) as after_qty,
@@ -60,19 +60,19 @@ Tools & Technologies
 	where campaign_id='CAMP_DIW_01'
 	group by p.category),
     
-isu_calculation as 
-(
+	isu_calculation as 
+	(
 	select 
 		category,
         round((after_qty-before_qty)*100/before_qty,2) as isu_pct
 	 from category_sales
-)
-select
+	)
+	select
 	category,
     isu_pct,
     dense_rank() over(order by isu_pct) as isu_rank
-from isu_calculation
-order by isu_rank;
+	from isu_calculation
+	order by isu_rank;
 
 5.Identify the top 5 products across all campaigns by Incremental Revenue Percentage (IR%), including product name, category, and IR%.
 
@@ -85,14 +85,14 @@ order by isu_rank;
 	join dim_products p
 	using(product_code)
 	group by p.category
-),
-is_calculation as (
+	),
+	is_calculation as (
 	select
 		product_name,category,
         ROUND((after_revenue-before_revenue)*100/before_revenue,2) as IR_pct
 	from category_sales
-)
-select 
+	)
+	select 
 	* from is_calculation
     order by IR_pct;
 
